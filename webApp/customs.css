@@ -1,0 +1,20 @@
+.paddy {
+    padding: 10px;
+    padding-top: 10px;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+#inputT {
+    width: 25%; 
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+#TL{
+    font-size: large;
+    font: verdana;
+}
