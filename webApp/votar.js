@@ -11,13 +11,13 @@ function voto(){
     
     for (var i = 0; i < arrayLength; i++) {
         if(arrP[i] == "-"){
-            error();
+            error(1);
             return
         }
     }
 
     if (hasDuplicates(arrP)){
-        error();
+        error(2);
         return;
     }
 
@@ -25,8 +25,19 @@ function voto(){
     window.location.href = "sure.html";
 }
 
-function error(){
-    console.log("ERROR")
+function error(num){
+    console.log("ERROR");
+    var ins = document.getElementById("INS");
+    ins.style.color = "red";
+    ins.style.fontWeight = "bolder";
+
+    if (num == 1){
+        ins.innerHTML = "No puedes dejar espacios vacios";
+        
+    }
+    else if (num == 2){
+        ins.innerHTML = "No se puede repetir las opciones";
+    }
 }
 
 
