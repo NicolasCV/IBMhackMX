@@ -1,8 +1,29 @@
+<!DOCTYPE html>
 <html>
     <body>
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="customs.css">
 
-        <h1>PROBANDO HUELLA PAGINA</h1>
+        <!-- IMAGEN EN LO DE HASTA ARRIBA -->
+        <div style="text-align:center">
+            <img class="img-responsive" style="text-align:center" src="https://www.ine.mx/wp-content/uploads/2017/04/logo-ine.png" alt="Logo INE">
+        </div>
+
+        <br><br><br>
+
+        <div style="text-align:center">
+            <label for="HuellaIMG" class="form-label" id = "TL">Ingrese su <span style="font-weight:bold">huella</span> en el dispositivo</label>
+            <br>
+            <img id = "HuellaIMG" src="resources\fingerprint.png" alt="Huella">
+            <input id = "inputH" class="form-control form-control-lg" type="text" placeholder="SIMULAR HUELLA" aria-label=".form-control-lg example">
+            <br>
+
+            <!-- BOTON -->
+            <button type="button" onclick="huella()" class="btn btn-secondary">Simular</button>
+        
+        </div>
+
+        <script src="huella.js"></script>
     </body>
 </html>

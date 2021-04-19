@@ -14,7 +14,20 @@ body {
     display: block;
 }
 
+#inputH {
+    width: 25%; 
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
 #TL{
     font-size: large;
     font: verdana;
+}
+
+#HuellaIMG{
+    width: 10%;
+    height: 10%
+
 }

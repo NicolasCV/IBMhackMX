@@ -1,1 +1,7 @@
-<img class="img-responsive" src="https://www.ine.mx/wp-content/uploads/2017/04/logo-ine.png" alt="Logo INE">
+qrcode?
+
+bootstrap para la pagina web
+jquery para AJAX = queries in javascript
+
+IBM CLOUD DATABASE
+
