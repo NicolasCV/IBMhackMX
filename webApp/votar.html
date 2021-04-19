@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        
+        <title>INE - Ingresa tu Voto</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="customs.css">
 
@@ -13,9 +13,63 @@
         <br><br><br>
         
         <div style="text-align:center">
-            <!-- LABEL + INPUT -->
-            <label class="form-label" id = "TL">PROBANDO VOTAR</label>
+            <label class="form-label" id = "TL"><span style="font-weight:bold">Puesto Gobernador NL 2021</label>
+            <br><br>
 
+            <label for="candidatoA">CANDIDATO A:</label>
+            <br>
+
+            <select name="candidatoA" id="candidatoA" size = "1">
+                <option value="-">---</option>
+                <option value="1er">Primer Lugar</option>
+                <option value="2do">Segundo Lugar</option>
+                <option value="3ro">Tercero Lugar</option>
+                <option value="4to">Cuarto Lugar</option>
+            </select>
+
+            <br><br>
+
+            <label for="candidatoB">CANDIDATO B:</label>
+            <br>
+
+            <select name="candidatoB" id="candidatoB" size = "1">
+                <option value="-">---</option>
+                <option value="1er">Primer Lugar</option>
+                <option value="2do">Segundo Lugar</option>
+                <option value="3ro">Tercero Lugar</option>
+                <option value="4to">Cuarto Lugar</option>
+            </select>
+
+            <br><br>
+            
+            <label for="candidatoC">CANDIDATO C:</label>
+            <br>
+
+            <select name="candidatoC" id="candidatoC" size = "1">
+                <option value="-">---</option>
+                <option value="1er">Primer Lugar</option>
+                <option value="2do">Segundo Lugar</option>
+                <option value="3ro">Tercero Lugar</option>
+                <option value="4to">Cuarto Lugar</option>
+            </select>
+
+            <br><br>
+            
+            <label for="candidatoD">CANDIDATO D:</label>
+            <br>
+
+            <select name="candidatoD" id="candidatoD" size = "1">
+                <option value="-">---</option>
+                <option value="1er">Primer Lugar</option>
+                <option value="2do">Segundo Lugar</option>
+                <option value="3ro">Tercero Lugar</option>
+                <option value="4to">Cuarto Lugar</option>
+            </select>
+            <br><br>
+            <button type="button" onclick="voto()" class="btn btn-secondary">Ingresar Voto</button>
+
+
+       </div>
 
         <script src="votar.js"></script>
     </body>

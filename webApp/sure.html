@@ -15,14 +15,18 @@
         
         <div style="text-align:center">
             <!-- LABEL + INPUT -->
-            <label for="inputT" class="form-label" id = "TL">Ingrese su <span style="font-weight:bold">Ticket de Votante</span> que se le proporciono en la entrada</label>
-            <input id = "inputT" class="form-control form-control-lg" type="text" placeholder="Ticket de Votante" aria-label=".form-control-lg example">
-            <br>
-
+            <label class="form-label" id = "VotoResults">Seguro que quiere ingresar este voto?</label>
+            <ol class = "centrado">
+                <li id = "1R">probando</li>
+                <li id = "2R"></li>
+                <li id = "3R"></li>
+                <li id = "4R"></li>
+            </ol>
             <!-- BOTON -->
-            <button type="button" onclick="enter()" class="btn btn-secondary">Ingresar</button>
+            <button type="button" onclick="cancelar()" class="btn btn-secondary">Cancelar</button>
+            <button type="button" onclick="confirmar()" class="btn btn-secondary">Confirmar</button>
         </div>
 
-        <script src="index.js"></script>
+        <script src="sure.js"></script>
     </body>
 </html>

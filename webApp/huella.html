@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        
+        <title>INE - Huella Biometrica</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="customs.css">
 
@@ -16,11 +16,18 @@
             <label for="HuellaIMG" class="form-label" id = "TL">Ingrese su <span style="font-weight:bold">huella</span> en el dispositivo</label>
             <br>
             <img id = "HuellaIMG" src="resources\fingerprint.png" alt="Huella">
-            <input id = "inputH" class="form-control form-control-lg" type="text" placeholder="SIMULAR HUELLA" aria-label=".form-control-lg example">
-            <br>
+            
+            
+            <div class = "Simulado">
 
-            <!-- BOTON -->
-            <button type="button" onclick="huella()" class="btn btn-secondary">Simular</button>
+                <input id = "inputH" class="form-control form-control-lg" type="text" placeholder="SIMULAR HUELLA" aria-label=".form-control-lg example">
+                <br>
+
+                <!-- BOTON -->
+                <button type="button" onclick="huella()" class="btn btn-secondary">Simular</button>
+
+            </div>
+            
         
         </div>
 
