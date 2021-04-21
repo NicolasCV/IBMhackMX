@@ -15,7 +15,7 @@ def generaClave(idp):
                 '''.format(idd = idp)
     cursor.execute(executeOrder)
     claves = cursor.fetchmany()
-    print(claves[0][0])
+    print("La Clave de Elector para generar el voto es: ",claves[0][0])
     return claves[0][0]
 
 def probando():
@@ -38,6 +38,7 @@ def voto(clave):
     chartime3 = chr(time3)
 
     clavevoto = str(chartime) + str(res1) + str(chartime2) + str(res3) + str(chartime3)
+    print("La Clave de voto generada es: ",clavevoto)
     return clavevoto
 
 def escribir(Value, idp):
@@ -51,6 +52,7 @@ def escribir(Value, idp):
                 '''.format(selector = Value, selector2 = 1 , idd = idp)
     cursor.execute(executeOrder)
     con.commit()
+    print("La clavevoto se escribio a la base de datos")
 
 claves = generaClave(idp)
 escribir(voto(claves), idp)
