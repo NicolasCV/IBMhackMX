@@ -3,5 +3,14 @@ qrcode?
 bootstrap para la pagina web
 jquery para AJAX = queries in javascript
 
+flask
+
 IBM CLOUD DATABASE
 
+
+$.ajax({
+  type: "~/GeneraVoto.py",
+  data: { param: "text"}
+}).done(function( o ) {
+   // do something
+});

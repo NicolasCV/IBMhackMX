@@ -18,6 +18,9 @@ def generaClave(idp):
     print(claves[0][0])
     return claves[0][0]
 
+def probando():
+    return 1
+
 def voto(clave):
     global time
     clave2 = clave[0:6]
