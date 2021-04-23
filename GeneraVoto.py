@@ -1,34 +1,25 @@
-import sqlite3
 import time
-import mysql.connector
+import pandas as pd
+import sqlite3
 
-idp = 1  #se generara el voto de este id
+ingresacurp = input('ingresa curp ')  #se generara el voto de este id
 
-import MySQLdb
-
-db = MySQLdb.connect(host='192.168.0.136',  # your host name is often 'localhost'
-                     user='root',            
-                     passwd='password',  
-                     db='INE_Checkin') 
-
-#"XCM76348"."REGISTRO"
 dbfile = r'C:\Users\David Esquer\Downloads\dbINE.db'
-#con = sqlite3.connect(dbfile)
+
+con = sqlite3.connect(dbfile)
 
 def generaClave(idp):
     global con
+    cursor = con.cursor()
     executeOrder = '''
-                SELECT IDElector FROM Registro
-                WHERE ID = "{idd}";
-                '''.format(idd = idp)
-    stmt = ibm_db.exec_immediate(con, executeOrder)
-    claves = ibm_db.execute(stmt)
+                SELECT IDElector,GeneroID,VoteID,IDUsado FROM RegistroIne
+                WHERE CURP = "{curp}";
+                '''.format(curp = ingresacurp)
+    cursor.execute(executeOrder)
     claves = cursor.fetchmany()
     print("La Clave de Elector para generar el voto es: ",claves[0][0])
     return claves[0][0]
 
-def probando():
-    return 1
 
 def voto(clave):
     global time
@@ -54,14 +45,14 @@ def escribir(Value, idp):
     global con
     cursor = con.cursor()
     executeOrder = '''
-                UPDATE Registro
+                UPDATE RegistroIne
                 SET VoteID = "{selector}",
                 GeneroID = "{selector2}"
-                WHERE ID = "{idd}";
-                '''.format(selector = Value, selector2 = 1 , idd = idp)
+                WHERE CURP = "{curp}"
+                '''.format(selector = Value, selector2 = 1 , curp = ingresacurp)
     cursor.execute(executeOrder)
     con.commit()
     print("La clavevoto se escribio a la base de datos")
 
-#claves = generaClave(idp)
-#escribir(voto(claves), idp)
+claves = generaClave(ingresacurp)
+escribir(voto(claves), ingresacurp)
