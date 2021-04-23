@@ -1,6 +1,6 @@
 import pyqrcode
 
-ClaveElector = "CLaveDeElector"
+ClaveElector = ""
 
 def generaQr(Clave):
     qrCode = pyqrcode.create(Clave, error='L', version=27, mode='binary')
