@@ -1,6 +1,6 @@
 import pyqrcode
 
-ClaveElector = ""
+ClaveElector = "EURD000617HSLSMVA5"
 
 def generaQr(Clave):
     qrCode = pyqrcode.create(Clave, error='L', version=27, mode='binary')
