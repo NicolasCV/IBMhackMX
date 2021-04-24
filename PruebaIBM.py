@@ -1,24 +1,49 @@
 import time
 import pandas as pd
-import sqlite3
 import qrcode
 from PIL import Image
 from pyzbar.pyzbar import decode
+import ibm_db as idb
+import ibm_db_dbi as dbi
+import pandas as pd
 
-dbfile = r'C:\Users\David Esquer\Downloads\dbINE.db'
-con = sqlite3.connect(dbfile)
+def connect():
+    global con,conn
+    try:
+        con=idb.connect("DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-10.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=tgz17976;PWD=3tc5kj75xb-qnzj9",'','')
+        conn = dbi.Connection(con)
+
+    except:
+        print("Error in connection, sqlstate = ")
+        errorMsg = idb.conn_errormsg()
+        print(errorMsg)
+
+def close():
+    global con
+    idb.close(con)
+
+def insertDB(sql_stmt):
+
+    connect()
+    stmt = idb.prepare(con, sql_stmt)
+
+    try:
+        idb.execute(stmt)
+    except:
+        print(idb.stmt_errormsg())    
+
+    return
 
 def generaClave(valor):
-    global con
-    cursor = con.cursor()
+    global conn
     executeOrder = '''
-                SELECT IDElector,GeneroID,VoteID,IDUsado FROM RegistroIne
-                WHERE CURP = "{curp}";
+                SELECT IDELECTOR,GENEROID,VOTEID,IDUSADO FROM REGISTROINE
+                WHERE CURP = '{curp}';
                 '''.format(curp = valor)
-    cursor.execute(executeOrder)
-    claves = cursor.fetchmany()
-    print("La Clave de Elector para generar el voto es: ",claves[0][0])
-    return claves
+    df = pd.read_sql(executeOrder, conn)
+
+    return df
+
 
 
 def voto(clave):
@@ -45,34 +70,39 @@ def voto(clave):
 
 
 def escribir(Value):
-    global con, ingresacurp
+    global con, valor
+
     if(Value == None):
-        print('este w ya voto')
+        print('Ya voto')
     else:
-        cursor = con.cursor()
+
         executeOrder = '''
                     UPDATE RegistroIne
-                    SET VoteID = "{selector}",
-                    GeneroID = "{selector2}"
-                    WHERE CURP = "{curp}"
-                    '''.format(selector = Value, selector2 = 1 , curp = ingresacurp)
-        cursor.execute(executeOrder)
-        con.commit()
-        print("La clavevoto se escribio a la base de datos")
+                    SET VoteID = '{selector}',
+                    GeneroID = '{selector2}'
+                    WHERE CURP = '{curp}'
+                    '''.format(selector = Value, selector2 = 1 , curp = valor)
+        insertDB(executeOrder)
+
+        print("La clave voto se escribio a la base de datos")
 
 
 def compruebaVoto(claves):
-    if((claves[0][1] == 0) & (claves[0][2] == None) & (claves[0][3] == 0)):
-        print('debe generar voto')
-        return claves[0][0]
+    if((claves.iloc[0,1] == 0) & (claves.iloc[0,2] == None) & (claves.iloc[0,3] == 0)):
+        print('Debe generar voto')
+        return claves.iloc[0][0]
     else:
         return None
 
 def LeerQr():
+    global valor
     img = Image.open('code.png')
     result = decode(img)
     for i in result:
         valor = i.data.decode("utf-8")
     return valor
 
+
+connect()
 escribir(voto(compruebaVoto(generaClave(LeerQr()))))
+close()

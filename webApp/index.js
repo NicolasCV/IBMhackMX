@@ -18,6 +18,7 @@ function enter(){
         goAhead = true;
     }
 
+
     if(goAhead){
         window.location.href = "huella.html";
     }
