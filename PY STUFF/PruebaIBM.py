@@ -44,8 +44,6 @@ def generaClave(valor):
 
     return df
 
-
-
 def voto(clave):
     global time
     if(clave == None):
